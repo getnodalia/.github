@@ -11,7 +11,7 @@ Snapshot: 12 November 2026. Scope: all 23 repositories returned by GitHub organi
 | [pluma](https://github.com/getnodalia/pluma) | `master` | Rust desktop publishing app | Extensive tests; CI, deterministic gates, SonarCloud, release/packaging/platform workflows | Active app; current dependency-update runs were in progress during audit. |
 | [nodalix-os](https://github.com/getnodalia/nodalix-os) | `main` | OS scripts and apps: Python, JavaScript, C/C++, shell | CI, deterministic gates, kernel, NxPM, package repository publication, release | **Critical.** Default CI and quality gates passed. Existing ISO/kernel/NxPM/publication flows were left untouched. |
 | [vortia](https://github.com/getnodalia/vortia) | `main` | Rust + scientific/desktop components | Rust CI, deterministic gates, AppImage release | **Critical scientific app.** Default Rust/CI checks passed. Numerical reference/convergence testing is a documented follow-up; do not mix benchmarks with correctness tests. |
-| [forja](https://github.com/getnodalia/forja) | `main` | Rust desktop CAD app | CI, SonarCloud, packaging and multi-platform release | Active app. SonarCloud and CI passed on a recent dependency branch; main release pipeline failed in shared Git-dependency setup. A separate feature branch failed `cargo xtask ci` at fmt. |
+| [forja](https://github.com/getnodalia/forja) | `main` | Rust desktop CAD app | CI, SonarCloud, packaging and multi-platform release | Active app. SonarCloud and CI passed on a recent dependency branch; an earlier release run failed its Git-source guard because the lockfile included `danielmigueltejedor/nodalia-design`. The current workflow file includes that dependency in its allowlist. A separate feature branch failed `cargo xtask ci` at fmt. |
 | [lumbre](https://github.com/getnodalia/lumbre) | `main` | Rust local AI/model agent | One CI workflow; unit/API tests | Experimental/new project. Main CI passed. No large-model download should be added to CI. |
 | [celdas](https://github.com/getnodalia/celdas) | `main` | Rust spreadsheet app | CI, SonarCloud, release/packaging/platform workflows | Active app; dependency update checks were in progress. |
 | [nodalia-web](https://github.com/getnodalia/nodalia-web) | `main` | JavaScript/TypeScript static sites | Validate/deploy workflow and SonarCloud; no test files found in tree inventory | Site deployment checks passed on main. Keep deployment restricted to its current default-branch flow. |
@@ -33,6 +33,30 @@ Snapshot: 12 November 2026. Scope: all 23 repositories returned by GitHub organi
 The large Rust applications share many workflow conventions and reference shared `craft-common-actions`; this indicates a related family of projects, but does not by itself establish their upstream/fork status. Existing releases remain custom/tag-based or cargo-dist-like. No Release Please workflow was added because it would create competing version/tag/changelog publication paths.
 
 ## What was verified
+
+## Workflow duration sample (baseline)
+
+Measured from `run_started_at` to `updated_at` for the latest successful core workflow found on the default branch on 12 November 2026. These are workflow wall times, not summed job time; queue time is excluded. A missing row means no comparable completed run was available in the sampled results.
+
+| Repository | Workflow | Baseline minutes |
+|---|---|---:|
+| vinilo | CI | 9.8 |
+| nodalix-os | CI | 40.0 |
+| vortia | CI | 5.8 |
+| forja | CI | 15.8 |
+| lumbre | CI | 2.3 |
+| celdas | CI | 10.7 |
+| nodalia-web | Validate and deploy | 1.0 |
+| tienda | build | 1.4 |
+| luz | CI | 41.0 |
+| letra | CI | 15.7 |
+| nodalia-design | CI | 25.1 |
+| pliego | CI | 10.1 |
+| brujula | Rust | 0.8 |
+| toma | CI | 13.8 |
+| lamina | CI | 7.0 |
+
+No before/after speedup is claimed: the PRs add separate scheduled/CodeQL jobs and do not alter the existing test or publication workflows. After successful PR runs, compare the existing CI workflows against these baselines before proposing caching or matrix changes.
 
 - Recent default-branch CI/quality runs were green for Nodalix OS, Vortia, Lumbre, Nodalia Web, Tienda, Nodalia Design, and Brújula.
 - Vinilo's latest main CI and deterministic gates were green.
