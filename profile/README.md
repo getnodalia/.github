@@ -1,20 +1,13 @@
 
 <div align="center">
 
-# NODALIA
+<img src="assets/nodalia-logo.png" alt="Nodalia" width="290">
 
-### Technology built with purpose.
+<h3>Technology built with purpose.</h3>
 
-**Independent software. Thoughtful design. Built for everyone.**
+<p>Independent software. Thoughtful design. Built for everyone.</p>
 
-We build open-source software that brings together
-engineering, performance and beautiful user experiences.
-
-<br>
-
-[![Website](https://img.shields.io/badge/Website-18181B?style=for-the-badge&logo=safari&logoColor=white)](https://getnodalia.com)
-[![GitHub](https://img.shields.io/badge/Our_Projects-18181B?style=for-the-badge&logo=github&logoColor=white)](https://github.com/orgs/getnodalia/repositories)
-[![Open Source](https://img.shields.io/badge/Open_Source-18181B?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](https://github.com/getnodalia)
+<a href="https://getnodalia.com"><img src="https://img.shields.io/badge/Website-18181B?style=flat-square&logo=safari&logoColor=white" alt="Website"></a>&nbsp;&nbsp;<a href="https://github.com/orgs/getnodalia/repositories"><img src="https://img.shields.io/badge/Explore_Projects-18181B?style=flat-square&logo=github&logoColor=white" alt="Explore Projects"></a>
 
 </div>
 
