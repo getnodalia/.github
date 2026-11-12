@@ -61,7 +61,7 @@ No before/after speedup is claimed: the PRs add separate scheduled/CodeQL jobs a
 - Recent default-branch CI/quality runs were green for Nodalix OS, Vortia, Lumbre, Nodalia Web, Tienda, Nodalia Design, and Brújula.
 - Vinilo's latest main CI and deterministic gates were green.
 - Forja's latest CI and SonarCloud runs on a dependency branch were green. Its separate release failure is not a test failure.
-- Actions for the newly proposed CodeQL workflows are now present on 21 public code/asset repositories. Their first PR runs are being checked; they are not required.
+- Actions for the newly proposed CodeQL workflows are now present on 21 public code/asset repositories. The first PR runs were queried on 12 November: all 21 CodeQL runs and the accompanying existing PR CI runs were still queued or pending, so none is verified green yet. The checks are not required. This is a runner queue state, not a workflow pass.
 - Scorecard workflows are scheduled and run on default-branch pushes, not ordinary PRs, to keep PR permissions minimal.
 - No Codecov workflow or real coverage upload was present in the audited workflow inventory. No coverage thresholds were added.
 - SonarCloud workflow/config files exist in multiple projects, but account tokens, PR decoration, project bindings, and Quality Gate status cannot be proven solely from repository files.
