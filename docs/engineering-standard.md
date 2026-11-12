@@ -2,6 +2,17 @@
 
 Status: proposed baseline, 12 November 2026. Apply per project type; never turn a new integration into a required check until a relevant PR has a successful, stable run.
 
+## Nodalia product and infrastructure independence
+
+Nodalia owns and maintains its application identity, documentation, release decisions, security response, and engineering standards. A previous open-source project's authorship is acknowledged where its licensing requires it, but upstream repositories **must not control Nodalia's active development pipeline**.
+
+- The desired end state is **no required CI workflows, reusable actions, release services, governance files, fonts, translations, updater endpoints, or Git source dependencies fetched from `storytold/*`**. Replace each with a reviewed Nodalia-maintained component or a properly licensed independent upstream alternative.
+- Move workflow code to `getnodalia` repositories or local workflows, pin actions to immutable commits, and use **only standard free GitHub-hosted runners** for public repositories. Never silently enable paid runners or self-hosted infrastructure.
+- Do not break existing releases by globally replacing repository URLs. Migrate and verify one dependency at a time, including its license, source provenance, reproducible build, distribution configuration, and security/update process.
+- Repository `AGENTS.md` and quality rules are authored and maintained by Nodalia. Do not inherit `storytold/craft-contrib` as a live source of authority.
+- Preserve applicable MIT/Apache-2.0 license notices, source attribution and third-party font and asset licenses. Provenance documentation is not an operational dependency and must not be erased to imply original authorship.
+- Use the [independence migration inventory](independence-migration.md) to coordinate the transition; a repo is not "independent" until its build, tests, releases and delivered binaries have been verified without `storytold/*` access.
+
 ## Principles
 
 - Prefer existing working project workflows over a universal workflow that hides important platform differences.
